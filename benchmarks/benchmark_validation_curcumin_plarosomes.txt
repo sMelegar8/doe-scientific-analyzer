@@ -1,0 +1,55 @@
+Benchmark validation report: Curcumin PLARosomes
+
+Files created:
+- benchmark_public_curcumin_plarosomes.xlsx
+
+Primary literature links:
+- Main article page: https://link.springer.com/article/10.1186/s43094-024-00733-y
+- SpringerOpen redirect page: https://fjps.springeropen.com/articles/10.1186/s43094-024-00733-y
+
+Why this benchmark is stronger:
+- 3 factors
+- 3 coded levels (-1, 0, +1)
+- 15 Box-Behnken runs
+- 3 measured responses
+- published model equations and published R2 values
+- pharmaceutical formulation domain
+
+Recommended app settings for reproduction:
+- Workspace: Analyze dataset
+- File: benchmark_public_curcumin_plarosomes.xlsx
+- Sheet/data: Benchmark_Data
+- Factor coding: Auto from observed min/max
+
+Response-specific settings:
+1. Y1_particle_size_nm
+- Model structure: Full (Interactions + Quadratic)
+- Literature equation:
+  Y1 = 417.20 + 339.87*x1 + 16.29*x2 + 2.19*x3 + 10.00*x1*x2 - 0.16*x1*x3 + 2.50*x2*x3 + 228.31*x1^2 + 3.44*x2^2 - 3.02*x3^2
+- Literature R2: 0.9999
+- Reproduced by statsmodels: R2 = 0.999904
+
+2. Y2_drug_release_pct
+- Model structure: Standard (Linear)
+- Literature equation:
+  Y2 = 59.66 - 16.08*x1 - 3.74*x2 - 0.4613*x3
+- Literature R2: 0.9808
+- Reproduced by statsmodels: R2 = 0.980828
+
+3. Y3_entrapment_eff_pct
+- Model structure: Standard (Linear)
+- Literature equation:
+  Y3 = 78.12 - 8.34*x1 - 1.84*x2 + 1.97*x3
+- Literature R2: 0.9368
+- Reproduced by statsmodels: R2 = 0.936780
+
+Expected agreement with the app:
+- Y1 should agree very closely when using Full (Interactions + Quadratic).
+- Y2 and Y3 should agree very closely when using Standard (Linear).
+
+Expected discrepancy if the wrong model is chosen:
+- If Y2 or Y3 are fitted with Full instead of Standard, the program will often produce a higher R2 than the paper because it is fitting extra interaction and quadratic terms that the authors intentionally did not keep in the final model.
+- This is not necessarily a bug; it is a model-selection difference.
+
+Known limitation revealed by this benchmark:
+- The app currently uses one model structure at a time for the active response. To benchmark multi-response literature rigorously, it would be better to support response-specific model selection or automatic model-family recommendation per response.

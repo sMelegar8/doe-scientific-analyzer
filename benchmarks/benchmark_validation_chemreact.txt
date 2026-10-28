@@ -1,0 +1,43 @@
+Benchmark validation report: ChemReact
+
+Files created:
+- benchmark_public_chemreact.xlsx
+
+Public sources:
+- Dataset documentation: https://rdrr.io/cran/rsm/man/ChemReact.html
+- Full worked analysis: https://rvlenth.github.io/rsm/articles/article-JSS.html
+- Journal paper: https://www.jstatsoft.org/v32/i07/
+
+Recommended settings in the app:
+- Workspace: Analyze dataset
+- File: benchmark_public_chemreact.xlsx
+- Model structure: Full (Interactions + Quadratic)
+- Factor coding: Manual center and half-range
+- x1 center = 85
+- x1 half-range = 5
+- x2 center = 175
+- x2 half-range = 5
+- Response = Yield
+
+Literature-compatible results:
+- R2 = 0.998082
+- Intercept = 84.095427
+- block1[T.B2] = -4.457530
+- x1 = 0.932541
+- x2 = 0.577712
+- x1 * x2 = 0.125000
+- x1^2 = -1.308555
+- x2^2 = -0.933442
+- Stationary point in actual units = (86.86148, 176.67190)
+- Surface nature = local maximum
+
+Expected discrepancy scenarios:
+1. Auto coding from observed min/max
+- Same fitted values and same R2.
+- Different coefficients because the scale changes from half-range 5 to half-range 7.07.
+- This is not a model error; it is a coding-definition difference.
+
+2. Omitting the block term
+- R2 collapses to about 0.282593.
+- The intercept and variance partitioning become wrong because block-to-block shift is absorbed into residuals.
+- This is a true model-specification error.

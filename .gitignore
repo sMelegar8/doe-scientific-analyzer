@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+.streamlit/
+doe_analysis_exports/
+_doe_export_tmp/
+outputs/*.zip
+outputs/*.tmp
+dist/
+build/
+*.egg-info/
